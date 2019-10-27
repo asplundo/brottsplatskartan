@@ -16,7 +16,6 @@ struct ContentView: View {
                 }
             }
             .onAppear(perform: {
-                print("ContetView onAppear")
                 self.store.commit(EventsMutation.events([]))
                 self.store.dispatch(FetchAction.areas)
             })

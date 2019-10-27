@@ -12,6 +12,7 @@ struct EventsView: View {
                     .padding(.bottom)
             }
         }
+        .navigationBarTitle(area)
         .onAppear {
             self.store.dispatch(FetchAction.events(area: self.area, page: 1))
         }

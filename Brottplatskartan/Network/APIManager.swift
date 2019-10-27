@@ -14,7 +14,6 @@ class APIManager {
     var cancellable: AnyCancellable?
     var decoder: JSONDecoder {
         let decoder = JSONDecoder()
-//        decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .iso8601
         return decoder
     }
@@ -44,7 +43,6 @@ class APIManager {
         guard let url = getEventsUrlComponents(for: area, page: page).url else {
             fatalError("Could not create url for events")
         }
-        print(url.absoluteString)
         let publisher = URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }
             .decode(type: EventsResponse.self, decoder: self.decoder)
@@ -88,9 +86,3 @@ class APIManager {
     }
     
 }
-
-struct FetchEventsItem {
-    let page: Int
-    let limit: Int
-}
-
